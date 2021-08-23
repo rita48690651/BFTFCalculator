@@ -1,0 +1,77 @@
+﻿@model BFTFCalculator.Models.Calculator
+@{
+    ViewBag.Title = "Index";
+}
+
+<html>
+<head></head>
+<body>
+    <h2>貸款試算</h2>
+    <div class="row">
+        @using (Html.BeginForm("/Index", "Calculator", FormMethod.Post))
+        {
+            <div class="form-group">
+                <label for="money">貸款金額</label>
+                <input type="text" class="form-control" id="money" name="money" value="@Model.money" />
+            </div>
+            <div class="form-group">
+                <label for="rate">年利率</label>
+                <input type="text" class="form-control" id="rate" name="rate" value="@Model.rate" />
+            </div>
+            <div class="form-group">
+                <label for="period">期數</label>
+                <input type="text" class="form-control" id="period" name="period" value="@Model.period" />
+            </div>
+            <button type="submit" class="btn btn-info" id="add" value="add">OK</button>
+            
+        }
+
+
+
+        <h4>試算結果</h4>
+        <table class="table">
+           <thead><tr><td>期數</td><td>期付金</td><td>償還本金</td><td>償還利息</td><td>剩餘本金</td></tr></thead>
+            <tbody>
+                @foreach(var c in this.Model)
+            {
+                <tr>
+                    <td>c.period</td>
+                    <td>c.due</td>
+                    <td>c.PayPrinciple</td>
+                    <td>c.interest</td>
+                    <td>c.remain</td>
+                    
+
+
+
+                </tr>
+            }
+
+
+
+            </tbody>
+        </table>
+
+
+
+
+
+
+
+
+
+
+
+
+    </div>
+
+
+</body>
+
+
+
+
+
+
+</html>
+
